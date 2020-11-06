@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-
+#include <array>
+#include <vector>
 
 class Person
 {
@@ -14,6 +15,7 @@ public:
 	{
 
 	}
+	Person(std::string name);
 
 	int GetAge()
 	{
@@ -42,16 +44,19 @@ public:
 		this->name = name;
 	}
 
-	void Print()
-	{
-		std::cout << "name: " << name << ", height: " << height << ", age: " << age << std::endl;
-	}
+	void Print();
 };
 
-//Person::Print()
-//{
-//
-//}
+Person::Person(std::string name) : name(name)
+{
+	age = 0;
+	height = 0; 
+}
+
+void Person::Print()
+{
+	std::cout << "name: " << name << ", height: " << height << ", age: " << age << std::endl;
+}
 
 class Test
 {
@@ -92,6 +97,65 @@ void add(int& x, int& y, int& z)
 	z = x +y;
 }
 
+class testInfo
+{
+private:
+	static const int questions = 3;
+
+	std::array<int, questions> solutions = { 23, 53, 87 };
+	std::vector<std::array<int, questions>> differentScores;
+
+public:
+	testInfo(std::array<int, questions> givenAnswers, std::string studentName) : givenAnswers(givenAnswers), studentName(studentName)
+	{
+		SetScore;
+	}
+
+	std::array<int, questions> givenAnswers;
+	std::string studentName;
+	int score;
+
+	void SetScore()
+	{
+		int correctAnswers = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			if (solutions[i] == givenAnswers[i])
+			{
+				correctAnswers++;
+			}
+		}
+		//for (int num : givenAnswers)
+		//{
+		//	num++;
+		//}
+		score = correctAnswers;
+	}
+
+	int GetScore()
+	{
+		return score;
+	}
+
+	std::array<int, questions> GetSolutions()
+	{
+		return solutions;
+	}
+
+	void setSolutions(std::array<int, questions> newSolutions)
+	{
+		//this->solutions = newSolutions;
+		// set the element values
+		solutions = newSolutions;
+		for (int i = 0; i < questions; i ++)
+		{
+			solutions[i] = newSolutions[i];
+		}
+		SetScore();
+	}
+
+};
+
 
 
 int main()
@@ -102,8 +166,10 @@ int main()
 	//Age, Height, Name
 	//Get Set for each
 	//Print function (name, age, height)
-
-	Person person{7, 8, "bob"};
+	int age = 7;
+	Person person{age, 8, "bob"};
+	person.Print();
+	age = 10;
 	person.Print();
 
 	//int x = 2;
