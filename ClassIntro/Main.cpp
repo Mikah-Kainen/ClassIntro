@@ -2,6 +2,7 @@
 #include <string>
 #include <array>
 #include <vector>
+#include <random>
 
 class Person
 {
@@ -156,7 +157,27 @@ public:
 
 };
 
+class Game
+{
+private:
+	std::array<char, 4> positions;
 
+public:
+	Game()
+	{
+		 
+	}
+
+	void checkPositions(std::string input)
+	{
+		std::array<char, 4> parsedInput;
+		for (int i = 0; i < input.length; i ++)
+		{
+
+		}
+	}
+
+};
 
 int main()
 {
