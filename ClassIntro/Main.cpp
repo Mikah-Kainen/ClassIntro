@@ -239,6 +239,8 @@ int main()
 		std::string input{};
 		while (true)
 		{
+
+			count = count + 1;
 			std::cin >> input;
 			if (game.CheckPositions(input))
 			{
@@ -250,7 +252,7 @@ int main()
 				else
 				{
 					bestScore = count;
-					std::cout << "Good job you won! You beat your previous record! Your new Hight score is " << count << ".";
+					std::cout << "Good job you won! You beat your previous record! Your new Hight score is " << bestScore << ".";
 				}
 				std::cout << std::endl;
 				break;
@@ -265,6 +267,7 @@ int main()
 			break;
 		}
 	}
+
 
 	//HW
 	//Person Class
